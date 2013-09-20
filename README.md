@@ -1,0 +1,5 @@
+- search/add libs to bower 
+- add/edit npm packages
+- run npm install
+- run grunt init
+- run grunt to start watch server
