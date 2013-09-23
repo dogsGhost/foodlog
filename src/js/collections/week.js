@@ -3,8 +3,8 @@ var fl = fl || {};
 (function () {
   'use strict';
 
-  // Food List Collection
-  // A collection of Food Items
+  // Week Collection
+  // A collection of Day Models
   var Week = Backbone.Collection.extend({
     model: fl.Day,
 

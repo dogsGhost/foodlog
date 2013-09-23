@@ -5,11 +5,9 @@
 
     initialize: function () {
       // Bind events.
-      this.listenTo(fl.foodCollection, 'add', this.addOne);
-      this.listenTo(fl.foodCollection, 'reset', this.addAll);
 
       // Retrieve stored data.
-      fl.foodCollection.fetch();
+      fl.week.fetch();
     },
 
     addOne: function (food) {
