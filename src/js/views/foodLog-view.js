@@ -1,21 +1,30 @@
-var foodLog = foodLog || {};
-
 (function ($) {
   'use strict';
 
-  foodLog.foodLogView = Backbone.View.extend({
+  fl.foodLogView = Backbone.View.extend({
 
     initialize: function () {
-      this.listenTo(foodLog.foodList, 'add', this.addOne);
+      // Bind events.
+      this.listenTo(fl.foodCollection, 'add', this.addOne);
+      this.listenTo(fl.foodCollection, 'reset', this.addAll);
+
+      // Retrieve stored data.
+      fl.foodCollection.fetch();
     },
 
     addOne: function (food) {
-      var view = new foodLog.FoodItemView({
-        model: new foodLog.FoodItem(food) 
+      // Add one item to the food list.
+      var view = new fl.FoodItemView({
+        model: food 
       });
-      view.render();
+      view.render();  
+    },
+
+    addAll: function (food) {
+      // Create an html list from a whole collection.
+      fl.foodCollection.each(this.addOne, this);
     }
 
   });
-
+  
 })(jQuery);

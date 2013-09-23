@@ -1,20 +1,10 @@
-'use strict';
-var foodLog = foodLog || {};
+var fl = fl || {};
+var ENTER_KEY = 13;
 
-//$(function () {
+$(function () {
+  'use strict';
 
+  // Start the app.
+  new fl.foodLogView();
 
-var b = new foodLog.foodLogView();
-
-//
-var foodItem = {
-  title: 'cheeseburger, fries, and a milkshake'
-};
-
-var foodItemView = new foodLog.FoodItemView({
-  model: new foodLog.FoodItem(foodItem)
 });
-
-//
-
-//});

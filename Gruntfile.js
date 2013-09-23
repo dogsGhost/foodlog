@@ -95,7 +95,14 @@ module.exports = function (grunt) {
     concat: {
       dev: {
         files: {
-          '<%= project.app %>/js/app.min.js': ['<%= project.src %>/js/*/*.js', '<%= project.js %>']
+          // models, collections, views, routers, main
+          '<%= project.app %>/js/foodlog.min.js': [
+            '<%= project.src %>/js/models/*.js',
+            '<%= project.src %>/js/collections/*.js',
+            '<%= project.src %>/js/views/*.js',
+            '<%= project.src %>/js/routers/*.js',
+            '<%= project.js %>'
+          ]
         }
       },
       options: {
@@ -171,17 +178,17 @@ module.exports = function (grunt) {
       sass: {
         files: '<%= project.src %>/scss/{,*/}*.{scss,sass}',
         tasks: ['sass:dev']
-      },
-      livereload: {
-        options: {
-          livereload: LIVERELOAD_PORT
-        },
-        files: [
-          '<%= project.app %>/index.html',
-          '<%= project.app %>/css/*.css',
-          '<%= project.app %>/js/{,*/}*.js',
-          '<%= project.app %>/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
-        ]
+      // },
+      // livereload: {
+      //   options: {
+      //     livereload: LIVERELOAD_PORT
+      //   },
+      //   files: [
+      //     '<%= project.app %>/index.html',
+      //     '<%= project.app %>/css/*.css',
+      //     '<%= project.app %>/js/{,*/}*.js',
+      //     '<%= project.app %>/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+      //   ]
       }
     }
   });
@@ -194,8 +201,8 @@ module.exports = function (grunt) {
     'sass:dev',
     'jshint',
     'concat:dev',
-    'connect:livereload',
-    'open',
+    // 'connect:livereload',
+    // 'open',
     'watch'
   ]);
 

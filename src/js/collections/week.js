@@ -1,16 +1,17 @@
-var foodLog = foodLog || {};
+var fl = fl || {};
 
 (function () {
   'use strict';
 
   // Food List Collection
   // A collection of Food Items
+  var Week = Backbone.Collection.extend({
+    model: fl.Day,
 
-  var FoodList = Backbone.Collection.extend({
-    model: foodLog.foodItem
+    url: 'js/sample-data.json'
 
   });
 
   // Create global collection of food items.
-  foodLog.foodList = new FoodList();
+  fl.week = new Week();
 })();
