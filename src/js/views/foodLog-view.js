@@ -1,15 +1,19 @@
 (function ($) {
   'use strict';
 
+  // Top-level view for our app.
+
   fl.foodLogView = Backbone.View.extend({
 
     initialize: function () {
       // Bind events.
       fl.date = new Date();
       this.listenTo(fl.week, 'add', this.addOne);
+      this.listenTo(fl.week, 'reset', this.addAll);
+
 
       // Retrieve stored data.
-      fl.week.fetch();
+      fl.week.fetch({reset: true});
     },
 
     addOne: function (day) {

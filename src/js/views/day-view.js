@@ -1,6 +1,10 @@
 (function () {
   'use strict';
 
+
+  // View for one day and its associated information.
+  // For binding interactions to food items associated with this day, see foodItem-view.js
+
   fl.DayView = Backbone.View.extend({
 
     template: _.template( $('#day-template').html() ),
