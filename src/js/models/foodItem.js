@@ -6,7 +6,7 @@ var fl = fl || {};
   // Food Item Model
   // Represents one entry in a possible list on entries on one day.
 
-  fl.FoodItem = Backbone.Model.extend({
+  fl.FoodItem = Backbone.RelationalModel.extend({
 
   });
 

@@ -1,28 +1,32 @@
 (function ($) {
   'use strict';
 
+  // Top-level view for our app.
+
   fl.foodLogView = Backbone.View.extend({
 
     initialize: function () {
       // Bind events.
-      this.listenTo(fl.foodCollection, 'add', this.addOne);
-      this.listenTo(fl.foodCollection, 'reset', this.addAll);
+      fl.date = new Date();
+      this.listenTo(fl.week, 'add', this.addOne);
+      this.listenTo(fl.week, 'reset', this.addAll);
+
 
       // Retrieve stored data.
-      fl.foodCollection.fetch();
+      fl.week.fetch({reset: true});
     },
 
-    addOne: function (food) {
-      // Add one item to the food list.
-      var view = new fl.FoodItemView({
-        model: food 
+    addOne: function (day) {
+      // Add one item to the day list.
+      var view = new fl.DayView({
+        model: day 
       });
       view.render();  
     },
 
-    addAll: function (food) {
+    addAll: function (day) {
       // Create an html list from a whole collection.
-      fl.foodCollection.each(this.addOne, this);
+      fl.week.each(this.addOne, this);
     }
 
   });

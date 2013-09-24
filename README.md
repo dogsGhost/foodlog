@@ -1,5 +1,6 @@
-- search/add libs to bower 
-- add/edit npm packages
-- run npm install
-- run grunt init
-- run grunt to start watch server
+FoodLog
+=======
+
+*This project is still in development.*
+
+SPA using Backbone that lets the user keep a day-to-day list of what they eat.

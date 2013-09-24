@@ -6,37 +6,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="FoodLog, an easy way to track what you eat daily.">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
     <link href="css/style.min.css" rel="stylesheet">
     <script src="js/vendor/modernizr/modernizr.js"></script>
   </head>
   <body>
-  <div class="container">
-    <header class="header" role="banner">
-      <h1>FoodLog</h1>
-      <h2>track what you eat</h2>
+  <div class="wrapper">
+    <header class="page-header" role="banner">
+      <h1>FoodLog <small>track what you eat</small></h1>
     </header>
-    <ol id="week">
-    </ol>
+    <div id="week" class="week">
+    </div>
     <footer class="footer" role="contentinfo">
+      <small>2013 | <a href="#0">David made this</a></small>
     </footer>
   </div>
 
   <script id="foodItem-template" type="text/template">
     <div class="item">  
       <input type="text" class="edit">
-      <label><%= title %></label>
-      <button class="destroy btn">x</button>
+      <button class="destroy btn btn-warning"><i class="icon-remove"></i></button>
+      <label><%= title %> item</label>
     </div>
     <input class="edit" value="<%- title %>">
   </script>
 
   <script id="day-template" type="text/template">
-    <h2><%= date %></h2>
+    <h2><i></i> <%= dateString %></h2>
     <div class="inner-wrap">
-      <input type="text">
-      <ul class="entries">
+      <input type="text" placeholder="Today I ate...">
+      <ul class="entries unstyled">
       </ul>
     </div>
   </script>
