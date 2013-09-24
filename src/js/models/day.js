@@ -6,19 +6,10 @@ var fl = fl || {};
   fl.Day = Backbone.RelationalModel.extend({
     // url: 'js/sample-data.json',
 
-    makeDate: function () {
-      var d = new Date(this.get('date'));
-      b = d.getDate() + 1;
-      d.setDate(b);
-      return new Date(d).toDateString();
-    },
-
-    dateString: this.makeDate(),
-
     idAttribute: 'entry_id',
 
     relations: [{
-      type: Backbone.hasMany,
+      type: Backbone.HasMany,
 
       key: 'entries',
       

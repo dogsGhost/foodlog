@@ -5,22 +5,24 @@
 
     initialize: function () {
       // Bind events.
+      fl.date = new Date();
+      this.listenTo(fl.week, 'add', this.addOne);
 
       // Retrieve stored data.
       fl.week.fetch();
     },
 
-    addOne: function (food) {
-      // Add one item to the food list.
-      var view = new fl.FoodItemView({
-        model: food 
+    addOne: function (day) {
+      // Add one item to the day list.
+      var view = new fl.DayView({
+        model: day 
       });
       view.render();  
     },
 
-    addAll: function (food) {
+    addAll: function (day) {
       // Create an html list from a whole collection.
-      fl.foodCollection.each(this.addOne, this);
+      fl.week.each(this.addOne, this);
     }
 
   });
