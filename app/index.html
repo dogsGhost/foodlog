@@ -14,7 +14,11 @@
     <header class="page-header" role="banner">
       <h1>FoodLog <small>track what you eat</small></h1>
     </header>
-    <div id="week" class="week">
+    <nav class="week-pagination" role="navigation">
+      <a href="#0" class="prev-week"><i class="icon-chevron-left icon-white"></i>Prev Week</a>
+      <a href="#0" class="next-week">Next Week<i class="icon-chevron-right icon-white"></i></a>
+    </nav>
+    <div id="week" class="week" role="main">
     </div>
     <footer class="footer" role="contentinfo">
       <small>2013 | <a href="#0">David made this</a></small>
@@ -24,18 +28,19 @@
   <script id="foodItem-template" type="text/template">
     <div class="item">  
       <input type="text" class="edit">
-      <button class="destroy btn btn-warning"><i class="icon-remove"></i></button>
-      <label><%= title %> item</label>
+      <button class="destroy btn btn-warning" title="delete this item"><i class="icon-remove"></i></button>
+      <label><%= title %></label>
     </div>
-    <input class="edit" value="<%- title %>">
+    <input type="text" class="edit" value="<%- title %>">
   </script>
 
   <script id="day-template" type="text/template">
     <h2><i></i> <%= dateString %></h2>
     <div class="inner-wrap">
-      <input type="text" placeholder="Today I ate...">
+      <input type="text" placeholder="Today I ate..." class="add-new">
       <ul class="entries unstyled">
       </ul>
+      <p class="info">Double-click an item to edit it.</p>
     </div>
   </script>
   

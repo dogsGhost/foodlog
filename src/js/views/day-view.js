@@ -10,9 +10,36 @@
     template: _.template( $('#day-template').html() ),
 
     initialize: function () {
+      // Maintain reference to this in render functions.
       _.bindAll(this, 'render', 'renderEntry');
-      // this.model.bind('reset', this.render);
-      // this.model.bind('add:entries', this.renderEntry); 
+      // Watch for new entries and immediately add them to the page.
+      this.model.bind('add:entries', this.renderEntry);
+    },
+
+    events : {
+      'click h2': 'toggleContents',
+      'keypress input.add-new': 'createOnEnter'
+    },
+
+    toggleContents: function () {
+      // Hide or show content.
+      this.$('.inner-wrap').slideToggle();
+      // Set appropriate classes.
+      this.$el.toggleClass('current');
+      this.$icon.toggleClass('icon-plus icon-minus icon-white');
+    },
+
+    createOnEnter: function (e) {
+      var string = this.$input.val().trim();
+
+      // Listen for enter key to be pressed.
+      if (e.which === ENTER_KEY && string) {
+        // If enter key is pressed we add a new item to our collection.
+        this.$input.val('');
+        return this.model.get('entries').create({ title: string });
+      }
+
+      return;
     },
 
     renderEntry: function (entry) {
@@ -39,18 +66,25 @@
       return string;
     },
 
-    setIcon: function () {
+    setIcons: function () {
       if (this.$el.hasClass('current')) {
-        this.$('h2 i').addClass('icon-minus');
+        this.$icon.addClass('icon-minus icon-white');
       } else {
-        this.$('h2 i').addClass('icon-plus');
+        this.$icon.addClass('icon-plus');
       }
     },
 
     render: function () {
       this.$el.html( this.template( this.model.toJSON() ) );
+      this.$input = this.$('input.add-new');
+      this.$icon = this.$('h2').find('i');      
+      this.setIcons();
       this.model.get('entries').forEach(this.renderEntry);
-      this.setIcon();
+
+      if (this.$el.hasClass('current')) {
+        this.$('.inner-wrap').css('display', 'block');
+      }
+
       $('#week').append(this.el);
     }
   });

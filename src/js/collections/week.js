@@ -24,7 +24,7 @@ var fl = fl || {};
 
       // Get dats for all days of week after and including current day.
       // Don't include 7 because getDay is zero-based.
-      for (i = curDay; i < 7; i += 1) {
+      for (i = curDay; i < 6; i += 1) {
         
         // Create date object.
         d = new Date();
@@ -32,7 +32,7 @@ var fl = fl || {};
 
         // Convert to string.
         d = new Date(d).toISOString().split('T')[0];
-        
+
         // Add to arrray.
         dates.push(d);
         
@@ -41,17 +41,17 @@ var fl = fl || {};
       }
 
       // Reset some variables.
-      i = curDay;
+      i = curDay + 1;
       curDate = fl.date.getDate();
 
       // Do the same for days of the week that come before current day.
       while (i--) {
-        // Decrease curDate first since we already added the current day.
         curDate -= 1;
         d = new Date();
         d = d.setDate(curDate);
         d = new Date(d).toISOString().split('T')[0];
         dates.push(d);
+        
       }
 
       // Sort the dates.

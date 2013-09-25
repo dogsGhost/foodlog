@@ -8,9 +8,7 @@
     initialize: function () {
       // Bind events.
       fl.date = new Date();
-      this.listenTo(fl.week, 'add', this.addOne);
       this.listenTo(fl.week, 'reset', this.addAll);
-
 
       // Retrieve stored data.
       fl.week.fetch({reset: true});

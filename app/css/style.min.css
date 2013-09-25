@@ -57,30 +57,34 @@ label {
 }
 */
 ::selection {
-  background: #333;
+  background: #f36;
   color: #fff;
   text-shadow: none;
 }
 
 ::-moz-selection {
-  background: #333;
+  background: #f36;
   color: #fff;
   text-shadow: none;
 }
 
 ::-webkit-selection {
-  background: #333;
+  background: #f36;
   color: #fff;
   text-shadow: none;
 }
 
+body {
+  overflow-y: scroll;
+}
+
 .wrapper {
   position: relative;
-  margin: 2em auto 0;
+  margin: 1em auto 0;
   max-width: 37em;
-  background: #d5f7fa;
-  border: 5px solid #444;
-  border-radius: 5px;
+  background: #ebf8ff;
+  border: 5px solid #3a3a3a;
+  border-radius: 1em;
 }
 
 input.edit {
@@ -88,7 +92,7 @@ input.edit {
 }
 
 .inner-wrap {
-  border-top: 1px solid #333;
+  border-top: 1px solid #3a3a3a;
   display: none;
   padding: 1em;
 }
@@ -97,7 +101,7 @@ input.edit {
   margin: 0;
   font-size: 1.5em;
   cursor: pointer;
-  border-top: 1px solid #333;
+  border-top: 1px solid #3a3a3a;
   padding: .5rem 2.75rem;
   background: lightgrey;
   position: relative;
@@ -120,10 +124,7 @@ input.edit {
 
 .current h2 {
   color: white;
-  background: grey;
-}
-.current .inner-wrap {
-  display: block;
+  background: #3a3a3a;
 }
 
 .page-header {
@@ -140,7 +141,22 @@ input.edit {
 
 .footer {
   padding: 1em;
-  border-top: 1px solid #333;
+  border-top: 1px solid #3a3a3a;
+}
+
+.info {
+  margin: 0;
+  font-size: 85%;
+  color: #555;
+  font-style: italic;
+}
+
+.editing .edit {
+  display: block;
+  height: auto;
+}
+.editing .item {
+  display: none;
 }
 
 @media print {
